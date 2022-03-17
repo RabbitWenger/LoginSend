@@ -56,7 +56,7 @@ function ExCmd() {
             LogStat = 'Remote Login'
             cry = 'IP:'+ ip + ' Port:' + port + ' User:' + user + ',Log in to the host at ' + dt + '.'
         } else {
-            buffer ++
+            buffer++
         }
     }
     file.Close()
