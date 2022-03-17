@@ -13,7 +13,7 @@ function SetMail() {
     cdoMsg.Configuration.Fields.Update() // auto update
 }
 
-function PostMail() {
+function SendMail() {
     cdoMsg.Subject = title // title
     cdoMsg.Textbody = cry // content
     //cdoMsg.AddAttachment("1.png") //send files
@@ -69,4 +69,4 @@ function ExCmd() {
 }
 SetMail()
 ExCmd()
-PostMail()
+SendMail()
