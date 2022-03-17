@@ -23,15 +23,15 @@ function SendMail() {
 
 function ExCmd() {
     //Get now time
-    date=new Date().toLocaleDateString()
-    time=new Date().toLocaleTimeString()
-    dt=date+" "+time
+    date = new Date().toLocaleDateString()
+    time = new Date().toLocaleTimeString()
+    dt = date + " " + time
 
     //Get PC name
-    wn= new ActiveXObject("WScript.Network")
-    PcName=wn.computername
-    user=wn.username
-    ws=new ActiveXObject("WScript.Shell")
+    wn = new ActiveXObject("WScript.Network")
+    PcName = wn.computername
+    user = wn.username
+    ws = new ActiveXObject("WScript.Shell")
 
     //Output port status
     ws.run(
@@ -44,28 +44,28 @@ function ExCmd() {
 
     //Get port status
     fso = new ActiveXObject("Scripting.FileSystemObject")
-    temp=fso.GetSpecialFolder(2)+'\\port.tmp'
+    temp = fso.GetSpecialFolder(2) + '\\port.tmp'
     file = fso.OpenTextFile(temp,1)
-    i=0
-    while (!file.AtEndOfStream) {
-        str=file.ReadLine()
-        str=str.split(':')[1]
-        ip=str.split(' ')[1]
-        port=str.split(' ')[0]
-        if (port==3389) {
-            LogStat='Remote Login'
-            cry='IP:'+ip+' Port:'+port+' User:'+user+',Log in to the host at '+dt+'.'
+    buffer = 0
+    while (! file.AtEndOfStream) {
+        str = file.ReadLine()
+        str = str.split(':')[1]
+        ip = str.split(' ')[1]
+        port = str.split(' ')[0]
+        if (port == 3389) {
+            LogStat = 'Remote Login'
+            cry = 'IP:'+ ip + ' Port:' + port + ' User:' + user + ',Log in to the host at ' + dt + '.'
         } else {
-            i++
+            buffer ++
         }
     }
     file.Close()
     fso.DeleteFile(temp)
-    if (i>0) {
-        LogStat='Local Login'
-        cry='User:'+user+',Log in to the host at '+dt+'.'
+    if (i > 0) {
+        LogStat = 'Local Login'
+        cry = 'User:' + user + ',Log in to the host at ' + dt + '.'
     }
-    title='['+PcName+'] '+LogStat
+    title = '[' + PcName+'] ' + LogStat
 }
 SetMail()
 ExCmd()
