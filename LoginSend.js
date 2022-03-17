@@ -65,7 +65,7 @@ function ExCmd() {
         LogStat = 'Local Login'
         cry = 'User:' + user + ',Log in to the host at ' + dt + '.'
     }
-    title = '[' + PcName+'] ' + LogStat
+    title = '[' + PcName + '] ' + LogStat
 }
 SetMail()
 ExCmd()
